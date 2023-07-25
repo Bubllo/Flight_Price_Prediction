@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight Price Prediction System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Flight Price Prediction System</h2>
+        <form action="/submit" method="post">
+
+        <div class="form-group">
+            <label for="Airline">Airline</label>
+                <select name="Airline"  class="form-control" id="Airline" placeholder="Select airline">
+                    {% for i in label_map["Airline"].keys() %}
+                        <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+        </div>
+                  
+        <div class="form-row">
+                <div class="form-group col">
+                    <label for="Source"> From</label>
+                    <select name="Source"  class="form-control" id="Source" placeholder="Select source city">
+                        {% for i in label_map["Source"].keys() %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                <div class="form-group col">
+                    <label for="Destinaton">To</label>
+                    <select name="Destination"  class="form-control" id="Destionation" placeholder="Select destination city">
+                        {% for i in label_map["Destination"].keys() %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+        </div>
+        
+        <div class="form-row">
+                <div class="form-group col">
+                    <label for="departure_time"> Departure date & time </label>
+                    <input name="Dep_Time"  class="form-control" type="datetime-local" id="departure_time" placeholder="Select departure time" required>
+                  </div>
+                <div class="form-group col">
+                    <label for="arrival_time">Arrival time</label>
+                    <input name="Arrival_Time"  class="form-control" type="time" id="arrival_time" placeholder="Select arrival time" required>
+                 </div>
+        </div>
+
+        <div class="form-group">
+            <label for="stops">Number of stops</label>
+                <select name="Total_Stops"  class="form-control" id="stops" placeholder="Select number of stops">
+                    {% for i in label_map["Total_Stops"].keys() %}
+                        <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+        </div>
+        <div class="form-group">
+              <label for="Additional_Info"> Additional Info </label>
+                <select name="Additional_Info"  class="form-control" id="Additional_Info" >
+                    {% for i in label_map["Additional_Info"].keys() %}
+                    <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+        </div>
+        
+        
+            <div class="input-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
